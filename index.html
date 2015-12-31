@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Commentform Demo</title>
+    </head>
+    <body>
+        
+        <comment></comment>
+
+        <script src="./src/comment.tag" type="riot/tag"></script>
+        <script src="./node_modules/riot/riot+compiler.min.js"></script>
+        <script src="./bundle.js"></script>
+        <script>
+        var request = require('superagent');
+        riot.mount('comment', {
+            endpoint: 'http://wordpress.example.com/wp-json/wp/v2/comments',
+            post_id: 1747,
+            form: {
+                title: 'Comment',
+                default_message: 'Leave your comment.'
+            },
+            list: {
+                title: 'Comments',
+            }
+        });
+        </script>
+        
+    </body>
+</html>
